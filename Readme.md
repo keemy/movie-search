@@ -18,4 +18,14 @@ Extra Points (optional)
 ```
 
 How to run
+
+* backend
+```
+  cd backend
+  npm install -g forever
+  npm install -g node-inspector
+  npm install
+  npm run dev-server
+```
+
 ...
