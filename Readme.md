@@ -28,4 +28,13 @@ How to run
   npm run dev-server
 ```
 
+
+```
+cd frontend
+npm install -g webpack
+npm install -g babel-cli
+npm install
+npm run start 
+```
+
 ...
