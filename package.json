@@ -1,9 +1,10 @@
 {
-  "name": "frontend",
+  "name": "movie-app",
   "version": "0.0.0",
-  "description": "Redux boilerplate",
+  "description": "movie search app for Lattice",
   "scripts": {
-    "start": "node server.js"
+    "start": "forever -w -c \"node --debug\" server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -42,7 +43,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.1.1",
     "expect": "^1.6.0",
-    "express": "^4.13.3",
+    "express": "^4.14.0",
     "node-libs-browser": "^0.5.2",
     "webpack": "^1.9.11",
     "webpack-dev-middleware": "^1.2.0",

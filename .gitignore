@@ -3,3 +3,4 @@ v8.log
 .DS_Store
 npm-debug.log
 node-inspector-*.tgz
+config.js
