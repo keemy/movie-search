@@ -27,7 +27,7 @@ router.get('/search/:page?',function (req, res) {
     url: config.api_root + '/search/movie',
     qs: {
       api_key: config.api_key,
-      query: req.query.query || '',
+      query: req.query.query,
       page: req.params.page || 1
     }, headers: {
       'Accept': 'application/json'

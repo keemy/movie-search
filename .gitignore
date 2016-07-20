@@ -4,3 +4,4 @@ v8.log
 npm-debug.log
 node-inspector-*.tgz
 config.js
+dist

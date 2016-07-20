@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch'
 
 export const ACTION_1 = 'ACTION_1'
-export const ACTION_2 = 'ACTION_2'
+export const RECEIVE_MOVIES = 'RECEIVE_MOVIES'
 
 
 export function mySyncAction1(actionData) {
@@ -11,19 +11,20 @@ export function mySyncAction1(actionData) {
   }
 }
 
-export function mySyncAction2(actionData) {
+export function receiveMovies(movies) {
   return {
-    type: ACTION_2,
-    actionData
+    type: RECEIVE_MOVIES,
+    movies
   }
 }
 
-function myAsyncAction1(actionData) {
+export function getMovies(actionData) {
   return dispatch => {
-    dispatch(mySyncAction1(actionData))
-  //   return fetch(`something`)
-  //     .then(response => response.json())
-  //     .then(json => dispatch(mySyncAction2(json)))
+    return fetch(`/api/movie/popular`)
+      .then(response => response.json())
+      .then(json => {
+        dispatch(receiveMovies(json.results));
+      })
   }
 }
 

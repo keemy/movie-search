@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { mySyncAction1, myAsyncAction1 } from '../actions'
-import Posts from '../components/Posts'
+import { mySyncAction1, getMovies } from '../actions'
+import Movies from '../components/Movies'
 
 class App extends Component {
   constructor(props) {
@@ -11,11 +11,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-
+    this.props.getMovies({});
   }
 
   componentWillReceiveProps(nextProps) {
-
   }
 
   handleChange() {
@@ -25,16 +24,15 @@ class App extends Component {
   handleRefreshClick(e) {
     e.preventDefault()
 
-    this.props.myAsyncAction1({});
+    this.props.getMovies({});
   }
 
   render() {
-    let posts = [{title:"wowe"},{title:"wowsers"}]
+    let movies = this.props.movies
     return (
       <div>
-        swig swoog
-        <Posts
-          posts={posts}
+        <Movies
+          movies={movies}
         />
       </div>
     )
@@ -44,7 +42,9 @@ class App extends Component {
 App.propTypes = {};
 
 function mapStateToProps(state, ownProps) {
-  return {};
+  return {
+    movies: state.movies
+  };
 }
 
 function mapDispatchToProps(dispatch, ownProps){
@@ -52,10 +52,10 @@ function mapDispatchToProps(dispatch, ownProps){
     mySyncAction1: (actionData) => {
       dispatch(mySyncAction1(actionData))
     },
-    myAsyncAction1: (actionData) => {
-      dispatch(myAsyncAction1(actionData))
+    getMovies: (actionData) => {
+      dispatch(getMovies(actionData))
     },
   };
 }
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)

@@ -1,21 +1,18 @@
 import { combineReducers } from 'redux'
-import { ACTION_1, ACTION_2 } from '../actions'
 
-function myReducer(state = { }, action) {
+import { ACTION_1, RECEIVE_MOVIES } from '../actions'
+
+function movies(state = [], action) {
   switch (action.type) {
-    case ACTION_1:
-    case ACTION_2:
-      // need Object.assign({},...) because immutable.
-      return Object.assign({}, state, {
-        // action.newStateInfo
-      })
+    case RECEIVE_MOVIES:
+      return action.movies
     default:
       return state
   }
 }
 
 const rootReducer = combineReducers({
-  myReducer
+  movies
 })
 
 export default rootReducer
