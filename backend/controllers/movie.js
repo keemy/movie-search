@@ -16,8 +16,8 @@ router.get('/popular/:page?',function (req, res) {
       page: req.params.page || 1
     }, headers: {
       'Accept': 'application/json'
-    }}, function (error, response, body) {
-      res.status(200).send(body);
+  }}, function (error, response, body) {
+    res.status(200).send(body);
   });
 });
 
@@ -31,8 +31,8 @@ router.get('/search/:page?',function (req, res) {
       page: req.params.page || 1
     }, headers: {
       'Accept': 'application/json'
-    }}, function (error, response, body) {
-      res.status(200).send(body);
+  }}, function (error, response, body) {
+    res.status(200).send(body);
   });
 });
 
@@ -44,14 +44,26 @@ router.get('/info/:id',function (req, res) {
       api_key: config.api_key,
     }, headers: {
       'Accept': 'application/json'
-    }}, function (error, response, body) {
-      res.status(200).send(body);
+  }}, function (error, response, body) {
+    res.status(200).send(body);
+  });
+});
+
+router.get('/config', function (req, res) {
+  request({
+    method: 'GET',
+    url: config.api_root + '/configuration',
+    qs: {
+      api_key: config.api_key
+    }, headers: {
+      'Accept': 'application/json'
+  }}, function (error, response, body) {
+    return res.status(200).send(body);
   });
 });
 
 router.get('/', function (req, res) {
-  // TODO actually implement this
-  return res.status(200).send('swag');
+  res.status(404).send('not found');
 });
 
 module.exports = router;

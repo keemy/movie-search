@@ -19,22 +19,23 @@ Extra Points (optional)
 
 How to run
 
-* backend
+## backend
+
+1. create a file `backend/config.js` as below
+```
+module.exports = {
+  api_root: 'http://api.themoviedb.org/3',
+  api_key: <themoviedb_api_key>,
+}
+```
+
+2. install packages and run
 ```
   cd backend
   npm install -g forever
   npm install -g node-inspector
+  npm install -g webpack
+  npm install -g babel-cli
   npm install
-  npm run dev-server
+  npm run start
 ```
-
-
-```
-cd frontend
-npm install -g webpack
-npm install -g babel-cli
-npm install
-npm run start 
-```
-
-...
