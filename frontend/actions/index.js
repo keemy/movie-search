@@ -1,4 +1,5 @@
-import fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch';
+import querystring from 'querystring';
 
 export const ACTION_1 = 'ACTION_1'
 export const RECEIVE_MOVIES = 'RECEIVE_MOVIES'
@@ -18,9 +19,11 @@ export function receiveMovies(movies) {
   }
 }
 
-export function getMovies(actionData) {
+export function getMovies(query) {
+  let url = query ? `/api/movie/search/?${querystring.stringify({query})}` : `/api/movie/popular`;
+
   return dispatch => {
-    return fetch(`/api/movie/popular`)
+    return fetch(url)
       .then(response => response.json())
       .then(json => {
         dispatch(receiveMovies(json.results));

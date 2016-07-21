@@ -7,30 +7,28 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
-    this.handleRefreshClick = this.handleRefreshClick.bind(this)
   }
 
   componentDidMount() {
-    this.props.getMovies({});
+    this.props.getMovies();
   }
 
   componentWillReceiveProps(nextProps) {
   }
 
-  handleChange() {
-    this.props.mySyncAction1({});
-  }
-
-  handleRefreshClick(e) {
-    e.preventDefault()
-
-    this.props.getMovies({});
+  handleChange(event) {
+    let query = event.target.value;
+    this.props.getMovies(query);
   }
 
   render() {
     let movies = this.props.movies
     return (
       <div>
+        <input
+          type='text'
+          onChange={this.handleChange}
+        />
         <Movies
           movies={movies}
         />
@@ -52,8 +50,8 @@ function mapDispatchToProps(dispatch, ownProps){
     mySyncAction1: (actionData) => {
       dispatch(mySyncAction1(actionData))
     },
-    getMovies: (actionData) => {
-      dispatch(getMovies(actionData))
+    getMovies: (query) => {
+      dispatch(getMovies(query))
     },
   };
 }
