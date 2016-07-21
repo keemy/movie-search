@@ -6,12 +6,9 @@ export default class Movies extends Component {
     return (
       <div id='columns'>
         {this.props.movies.map((movie, i) => {
-          console.log(movie.poster_path );
+          // went with i as key so images were less jumpy
           return (
-            <div
-              className = 'pin'
-              key={i}
-            >
+            <div className = 'pin' key={i}>
               <Link to={`movie/${movie.id}`}>
                 {movie.poster_path ?
                   <img

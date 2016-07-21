@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import { get } from 'lodash'
+
 import { getMovie, getConfig } from '../actions'
 import MovieInfo from '../components/MovieInfo'
 
@@ -25,6 +27,7 @@ class Movie extends Component {
       <div>
         <MovieInfo
           movie={currentMovie}
+          backdropBaseUrl={this.props.baseImageUrl+"w1280"}
         />
       </div>
     )
@@ -35,7 +38,8 @@ Movie.propTypes = {};
 
 function mapStateToProps(state, ownProps) {
   return {
-    currentMovie: state.currentMovie
+    currentMovie: state.currentMovie,
+    baseImageUrl: get(state.config, 'images.base_url') || 'http://image.tmdb.org/t/p/',
   };
 }
 
