@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { getMovies } from '../actions'
+import { get } from 'lodash'
+
+import { getMovies, getConfig } from '../actions'
 import Movies from '../components/Movies'
 
 class App extends Component {
@@ -11,6 +13,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.getMovies();
+    this.props.getConfig();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -31,6 +34,7 @@ class App extends Component {
         />
         <Movies
           movies={movies}
+          baseImageUrl={this.props.baseImageUrl+"w500"}
         />
       </div>
     )
@@ -41,7 +45,8 @@ App.propTypes = {};
 
 function mapStateToProps(state, ownProps) {
   return {
-    movies: state.movies
+    movies: state.movies,
+    baseImageUrl: get(state.config, 'images.base_url') || 'http://image.tmdb.org/t/p/',
   };
 }
 
@@ -49,6 +54,9 @@ function mapDispatchToProps(dispatch, ownProps){
   return {
     getMovies: (query) => {
       dispatch(getMovies(query))
+    },
+    getConfig: () => {
+      dispatch(getConfig())
     },
   };
 }

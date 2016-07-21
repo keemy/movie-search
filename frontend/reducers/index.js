@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux';
 
-import { RECEIVE_MOVIE, RECEIVE_MOVIES } from '../actions'
+import { RECEIVE_CONFIG, RECEIVE_MOVIE, RECEIVE_MOVIES } from '../actions'
 
 function movies(state = [], action) {
   switch (action.type) {
@@ -21,10 +21,20 @@ function currentMovie(state = {}, action) {
   }
 }
 
+function config(state = {}, action) {
+  switch (action.type) {
+    case RECEIVE_CONFIG:
+      return action.config
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   routing: routerReducer,
   movies,
-  currentMovie
+  currentMovie,
+  config
 })
 
 export default rootReducer

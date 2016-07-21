@@ -3,6 +3,7 @@ import querystring from 'querystring';
 
 export const RECEIVE_MOVIE = 'RECEIVE_MOVIE'
 export const RECEIVE_MOVIES = 'RECEIVE_MOVIES'
+export const RECEIVE_CONFIG = 'RECEIVE_CONFIG'
 
 
 export function receiveMovie(movie) {
@@ -17,6 +18,13 @@ export function receiveMovies(movies) {
   return {
     type: RECEIVE_MOVIES,
     movies
+  }
+}
+
+export function receiveConfig(config) {
+  return {
+    type: RECEIVE_CONFIG,
+    config
   }
 }
 
@@ -40,6 +48,19 @@ export function getMovies(query) {
       .then(response => response.json())
       .then(json => {
         dispatch(receiveMovies(json.results));
+      })
+  }
+}
+
+export function getConfig() {
+  let url = `/api/movie/config`;
+
+  return dispatch => {
+    return fetch(url)
+      .then(response => response.json())
+      .then(json => {
+        console.log(json)
+        dispatch(receiveConfig(json));
       })
   }
 }

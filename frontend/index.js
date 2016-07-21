@@ -14,6 +14,7 @@ import configureStore from './store/configureStore'
 const store = configureStore()
 const appHistory = syncHistoryWithStore(useRouterHistory(createHashHistory)({ queryKey: false }), store);
 
+require('./application.css')
 render(
   <Provider store={store}>
     <Router history={appHistory}>

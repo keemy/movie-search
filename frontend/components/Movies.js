@@ -4,17 +4,32 @@ import { Link } from 'react-router';
 export default class Movies extends Component {
   render() {
     return (
-      <ul>
+      <div id='columns'>
         {this.props.movies.map((movie, i) => {
+          console.log(movie.poster_path );
           return (
-            <li key={movie.id}>
+            <div
+              className = 'pin'
+              style={{
+                'marginTop': '20px',
+              }}
+              key={i}
+            >
               <Link to={`movie/${movie.id}`}>
-                {movie.title}
+                {movie.poster_path ?
+                  <img
+                    src={this.props.baseImageUrl+movie.poster_path}
+                    alt={movie.title}
+                    className = 'col-xs-12 col-lg-12'
+                  /> :
+                  <div>{movie.title}</div>
+                }
+
               </Link>
-            </li>
+            </div>
           )
         })}
-      </ul>
+      </div>
     )
   }
 }

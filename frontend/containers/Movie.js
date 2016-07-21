@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
-import { getMovie } from '../actions'
+import { getMovie, getConfig } from '../actions'
 import MovieInfo from '../components/MovieInfo'
 
 
@@ -13,6 +13,7 @@ class Movie extends Component {
   componentDidMount() {
     let movieId = this.props.location.pathname.split('/').pop();
     this.props.getMovie(movieId);
+    this.props.getConfig();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -42,6 +43,9 @@ function mapDispatchToProps(dispatch, ownProps){
   return {
     getMovie: (movieId) => {
       dispatch(getMovie(movieId))
+    },
+    getConfig: () => {
+      dispatch(getConfig())
     },
   };
 }
