@@ -31,6 +31,7 @@ class App extends Component {
         <input
           type='text'
           onChange={this.handleChange}
+          className="form-control"
         />
         <Movies
           movies={movies}
