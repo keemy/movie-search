@@ -10,9 +10,6 @@ export default class Movies extends Component {
           return (
             <div
               className = 'pin'
-              style={{
-                'marginTop': '20px',
-              }}
               key={i}
             >
               <Link to={`movie/${movie.id}`}>
@@ -20,11 +17,9 @@ export default class Movies extends Component {
                   <img
                     src={this.props.baseImageUrl+movie.poster_path}
                     alt={movie.title}
-                    className = 'col-xs-12 col-lg-12'
                   /> :
                   <div>{movie.title}</div>
                 }
-
               </Link>
             </div>
           )
