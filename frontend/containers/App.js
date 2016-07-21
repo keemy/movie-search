@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { mySyncAction1, getMovies } from '../actions'
+import { getMovies } from '../actions'
 import Movies from '../components/Movies'
 
 class App extends Component {
@@ -47,9 +47,6 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch, ownProps){
   return {
-    mySyncAction1: (actionData) => {
-      dispatch(mySyncAction1(actionData))
-    },
     getMovies: (query) => {
       dispatch(getMovies(query))
     },
