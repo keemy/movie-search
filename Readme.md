@@ -17,11 +17,10 @@ Extra Points (optional)
 2. The UI/UX is nice
 ```
 
-How to run
+# Config
 
 ## backend
-
-1. create a file `backend/config.js` as below
+create a file `backend/config.js` as below
 ```
 module.exports = {
   api_root: 'http://api.themoviedb.org/3',
@@ -29,9 +28,9 @@ module.exports = {
 }
 ```
 
-2. install packages and run
+# Running
+install packages and run
 ```
-  cd backend
   npm install -g forever
   npm install -g node-inspector
   npm install -g webpack
